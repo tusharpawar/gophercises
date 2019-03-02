@@ -33,9 +33,12 @@ func main() {
 
 	//Registering both consumers
 	stateObj.Register(&a)
+
+	fmt.Println("")
+
 	stateObj.Register(&b)
 
-	fmt.Println("Change the state of StateMachine, Enter \n0 - Exit \n1 - Create \n2 - Pause \n3 - Resume \n4- Stop")
+	fmt.Println("\nChange the state of StateMachine, Enter \n0 - Exit \n1 - Create \n2 - Pause \n3 - Resume \n4 - Stop")
 
 	reader := bufio.NewReader(os.Stdin)
 	for {
@@ -58,8 +61,6 @@ func main() {
 			stateObj.NotifyConsumers(Resume)
 		case "4":
 			stateObj.NotifyConsumers(Stop)
-		case "5":
-			stateObj.Unregister(&a)
 		default:
 			fmt.Println("Invalid input, try again")
 		}
